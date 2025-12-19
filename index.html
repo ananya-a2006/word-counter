@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Live Word & Character Counter</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #d3d3d3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background: #2f2f2f;
+        color: white;
+        padding: 20px;
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        width: 100%;
+        height: 120px;
+        padding: 10px;
+        border-radius: 6px;
+        border: none;
+        resize: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .count-box {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .count-box span {
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Word & Character Counter</h2>
+
+    <textarea id="text" placeholder="Start typing here..."></textarea>
+
+    <div class="count-box">
+        <div>Words: <span id="words">0</span></div>
+        <div>Characters: <span id="chars">0</span></div>
+    </div>
+</div>
+
+<script>
+    const textArea = document.getElementById("text");
+    const wordCount = document.getElementById("words");
+    const charCount = document.getElementById("chars");
+
+    textArea.addEventListener("input", () => {
+        const text = textArea.value;
+
+        // Character count
+        charCount.textContent = text.length;
+
+        // Word count logic
+        const words = text.trim().split(/\s+/);
+        wordCount.textContent = text.trim() === "" ? 0 : words.length;
+    });
+</script>
+
+</body>
+</html>
